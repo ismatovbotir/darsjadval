@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
-            $table->foreignId('lesson_type_id');
+            $table->foreignId('category_id')->constrained()->nullable();
+            $table->foreignId('lesson_type_id')->constrained()->nullable();
             $table->string('title1');
             $table->string('title2')->nullable();
-            $table->string('lectors')->nullable();
-            $table->foreignId('language_id');
+            $table->string('lectors_text')->nullable();
+            $table->foreignId('language_id')->constrained();
             $table->date('lesson_date');
             $table->time('lesson_time');
-            $table->foreignId('location_type_id');
+            $table->foreignId('location_type_id')->constrained();
             $table->string('source')->nullable();
             $table->string('img');
             $table->boolean('approved')->default(false);
             $table->text('description')->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()->nullable();
 
             $table->timestamps();
         });
