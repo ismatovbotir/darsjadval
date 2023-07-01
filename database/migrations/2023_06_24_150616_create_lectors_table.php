@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('lectors', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('degree')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
